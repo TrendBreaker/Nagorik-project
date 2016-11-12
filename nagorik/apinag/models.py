@@ -5,6 +5,7 @@ import datetime
 class Issues(models.Model):
     issue_name = models.TextField()
     description = models.TextField()
+    status = models.CharField(max_length=22)
 
     def __str__(self):
     	return self.issue_name
