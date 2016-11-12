@@ -1,6 +1,7 @@
 from .models import Issues, SubCategory, Category
 from rest_framework import viewsets
-from .serializers import IssuesSerializer, CategorySerializer, SubCategorySerializer
+from .serializers import IssuesSerializer, CategorySerializer, SubCategorySerializer, UserSerializer, GroupSerializer
+from django.contrib.auth.models import User, Group
 
 
 class IssuesViewSet(viewsets.ModelViewSet):
@@ -31,3 +32,19 @@ class SubCategoryViewSet(viewsets.ModelViewSet):
     """
     queryset = SubCategory.objects.all()
     serializer_class = SubCategorySerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer

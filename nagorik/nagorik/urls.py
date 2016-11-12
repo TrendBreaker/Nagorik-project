@@ -21,6 +21,8 @@ from apinag import views
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 router.register(r'issues', views.IssuesViewSet)
 router.register(r'subcategory', views.SubCategoryViewSet)
 router.register(r'category', views.CategoryViewSet)
